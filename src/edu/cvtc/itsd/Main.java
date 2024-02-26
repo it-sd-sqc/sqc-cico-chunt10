@@ -104,6 +104,7 @@ public class Main {
   static JLabel labelUser;
   static JLabel labelState;
   static JButton buttonAcknowledge;
+  static JButton buttonNext;
 
   // Timer variables //////////////////////////////////////////////////////////
   static java.util.Timer timer;
@@ -288,6 +289,12 @@ public class Main {
     panelStatus.add(labelState);
 
     panelStatus.add(Box.createVerticalGlue());
+
+    buttonNext = new JButton("Next");
+    buttonNext.addActionListener(new Handler());
+    buttonNext.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    buttonNext.setForeground(Color.green);
+    panelStatus.add(buttonNext);
 
     // Error panel ////////////////////////////////////////////////////////////
     JPanel panelError = new JPanel();
