@@ -39,24 +39,22 @@ public class Main {
 
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
+            throws BadLocationException
     {
-      if (fb.getDocument() != null) {
+      if (fb.getDocument().getLength() + stringToAdd.length() <= MAX_LENGTH && stringToAdd.matches("\\d*")) {
         super.insertString(fb, offset, stringToAdd, attr);
-      }
-      else {
+      } else {
         Toolkit.getDefaultToolkit().beep();
       }
     }
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
+            throws BadLocationException
     {
-      if (fb.getDocument() != null) {
+      if (fb.getDocument().getLength() - lengthToDelete + stringToAdd.length() <= MAX_LENGTH && stringToAdd.matches("\\d*")) {
         super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-      }
-      else {
+      } else {
         Toolkit.getDefaultToolkit().beep();
       }
     }
@@ -106,6 +104,7 @@ public class Main {
   static JLabel labelUser;
   static JLabel labelState;
   static JButton buttonAcknowledge;
+  static JButton buttonNext;
 
   // Timer variables //////////////////////////////////////////////////////////
   static java.util.Timer timer;
@@ -290,6 +289,12 @@ public class Main {
     panelStatus.add(labelState);
 
     panelStatus.add(Box.createVerticalGlue());
+
+    buttonNext = new JButton("Next");
+    buttonNext.addActionListener(new Handler());
+    buttonNext.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    buttonNext.setForeground(Color.green);
+    panelStatus.add(buttonNext);
 
     // Error panel ////////////////////////////////////////////////////////////
     JPanel panelError = new JPanel();

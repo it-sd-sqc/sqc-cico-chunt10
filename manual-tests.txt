@@ -61,4 +61,23 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Module 4: Accepting only numerical input
 
+## Test Steps
+1. Build and run CiCo.
+2. Enter any non-numerical input.
+3. Enter numerical input.
+
+## Expected results
+* It should ignore any non-numerical input and only accept numerical input up to the card length of 8 numbers.
+
+# Module 5: Hit a button after the user scans their card so the next person can check in or out
+
+## Test Steps
+1. Build and run CiCo.
+2. Enter your card number.
+3. Press update.
+4. Then press next so the next person can check in or out.
+
+## Expected results
+* It should let the user press a button so the next user doesn't have to wait for the program to timeout before they check in or out.
